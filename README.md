@@ -26,8 +26,6 @@
 4. Watch the eight stages run, then read the decision and the reasons behind it.
 5. Open the **Dashboard** to see every run, its status and outputs, and download an audit record for any run.
 
-Suggested order: `1 Happy path` → `2 Ghost PO` → `3 Sneaky freight` → `4 Phantom duplicate` → `5a` then `5b Split billing` → `7 Price hike` (then approve it in the **Review queue**).
-
 
 ---
 
