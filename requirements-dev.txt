@@ -1,5 +1,4 @@
 -r requirements.txt
 # only needed to regenerate the sample PDFs and run the tests
-reportlab>=4.0
 pillow>=10.0
 pytest>=8.0

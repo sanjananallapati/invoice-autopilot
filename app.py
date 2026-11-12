@@ -19,7 +19,7 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from core import extractor, pipeline, store
+from core import extractor, pipeline, report, store
 from core.rules import money, tolerance_for
 
 ROOT = Path(__file__).parent
@@ -129,9 +129,16 @@ def render_outcome(record):
             column_config={"Unit price": st.column_config.NumberColumn(format="dollar"),
                            "Amount": st.column_config.NumberColumn(format="dollar")})
     st.caption(f"Run {record['run_id']} · {record['engine']} · {record['duration_ms']} ms · file {record['file_sha']}")
-    st.download_button("Download audit record (JSON)", json.dumps(record, indent=2),
-                       file_name=f"audit_{record['run_id']}.json", mime="application/json",
-                       key=f"dl_{record['run_id']}_{st.session_state.get('page_key', '')}")
+    suffix = f"{record['run_id']}_{st.session_state.get('page_key', '')}"
+    a, b, _ = st.columns([1.3, 1.3, 2.4])
+    a.download_button("Download decision report (PDF)", report.build_report(record),
+                      file_name=f"decision_report_{record['run_id']}.pdf", mime="application/pdf",
+                      type="primary", key=f"pdf_{suffix}", width="stretch",
+                      help="A one-page, readable summary to save or forward.")
+    b.download_button("Download audit record (JSON)", json.dumps(record, indent=2),
+                      file_name=f"audit_{record['run_id']}.json", mime="application/json",
+                      key=f"dl_{suffix}", width="stretch",
+                      help="The complete run data, for other systems or an audit.")
 
 
 # ------------------------------------------------------------ process page ---

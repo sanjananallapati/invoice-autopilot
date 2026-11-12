@@ -1,6 +1,7 @@
 streamlit>=1.50,<2
 pdfplumber>=0.11
 pypdfium2>=4.30
+reportlab>=4.0
 requests>=2.31
 python-dateutil>=2.9
 pandas>=2.0

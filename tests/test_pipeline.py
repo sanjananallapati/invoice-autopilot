@@ -105,3 +105,28 @@ def test_gemini_answer_is_normalised(monkeypatch):
     f = extractor.extract((SAMPLES / "06_scanned_invoice.pdf").read_bytes(), "gemini", "fake")["fields"]
     assert f["invoice_date"] == "2026-11-03" and f["po_number"] is None and f["total"] == 2592.0
     assert f["line_items"][0]["amount"] == 1480.0
+
+
+def test_pdf_report_is_built_for_every_kind_of_outcome():
+    import io
+    import pdfplumber
+    from core import report
+    for name, phrase in [("03_freight_within_tolerance.pdf", "APPROVED - WITHIN TOLERANCE"),
+                         ("04_phantom_duplicate.pdf", "REJECTED - SUSPECTED DUPLICATE"),
+                         ("06_scanned_invoice.pdf", "FLAGGED - UNREADABLE DOCUMENT")]:
+        pdf = report.build_report(process(name))
+        assert pdf[:5] == b"%PDF-"
+        with pdfplumber.open(io.BytesIO(pdf)) as doc:
+            text = "\n".join(pg.extract_text() for pg in doc.pages)
+        assert phrase in text and "Checks performed" in text
+
+
+def test_pdf_report_shows_the_reviewer_decision():
+    import io
+    import pdfplumber
+    from core import report
+    r = process("07_over_tolerance.pdf")
+    done = pipeline.resolve_review(r["run_id"], "approve", "Price rise agreed by buyer")
+    with pdfplumber.open(io.BytesIO(report.build_report(done))) as doc:
+        text = doc.pages[0].extract_text()
+    assert "Reviewer decision" in text and "Price rise agreed by buyer" in text
