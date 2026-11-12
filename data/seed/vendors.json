@@ -1,0 +1,10 @@
+[
+  {"vendor_id": "V-001", "name": "Northwind Office Supplies Inc.", "aliases": ["Northwind Office Supply"], "status": "approved", "payment_terms": "Net 30"},
+  {"vendor_id": "V-002", "name": "Summit Logistics LLC", "aliases": ["Summit Logistics"], "status": "approved", "payment_terms": "Net 30"},
+  {"vendor_id": "V-003", "name": "Brightline Packaging Co.", "aliases": [], "status": "approved", "payment_terms": "Net 45"},
+  {"vendor_id": "V-004", "name": "Kestrel Industrial Parts Ltd.", "aliases": ["Kestrel Industrial"], "status": "approved", "payment_terms": "Net 30"},
+  {"vendor_id": "V-005", "name": "Atlas Consulting Group", "aliases": [], "status": "approved", "payment_terms": "Net 15"},
+  {"vendor_id": "V-006", "name": "Meridian Facilities Services", "aliases": ["Meridian Facility Services"], "status": "approved", "payment_terms": "Net 30"},
+  {"vendor_id": "V-007", "name": "Halcyon Print & Media", "aliases": ["Halcyon Print and Media"], "status": "approved", "payment_terms": "Net 30"},
+  {"vendor_id": "V-008", "name": "Orion Trade Partners", "aliases": [], "status": "blocked", "status_reason": "Failed compliance review (Aug 2026)", "payment_terms": "Net 30"}
+]

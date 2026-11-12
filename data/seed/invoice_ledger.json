@@ -1,0 +1,5 @@
+[
+  {"invoice_number": "INV-102", "vendor_id": "V-004", "vendor_name": "Kestrel Industrial Parts Ltd.",
+   "invoice_date": "2026-10-28", "total": 5238.00, "po_number": "PO-1005",
+   "status": "approved", "payment_status": "awaiting payment", "run_id": "seed", "processed_at": "2026-10-29T10:14:00"}
+]
