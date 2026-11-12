@@ -3,6 +3,8 @@
 **Automated accounts-payable invoice processing: a vendor invoice PDF goes in, and a reasoned decision comes out — APPROVED, FLAGGED for review, or REJECTED.**
 
 ### ▶ Live app: https://invoice-autopilot-h2vtudvryjxpvggd7vqfyb.streamlit.app/
+### ▶ Demo video: https://www.loom.com/share/c253afc44703450c8f45c39e21e4aa10
+
 ---
 
 ## Contents
